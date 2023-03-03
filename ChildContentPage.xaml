@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BugMAUIModalPage.ChildContentPage"
+             Shell.PresentationMode="Modal"
+             x:Name="this"
+             Title="ChildContentPage">
+    <Border HorizontalOptions="Fill"
+            BindingContext="{x:Reference this}" Margin="5" Stroke="Transparent">
+
+
+        <Grid Margin="0" HorizontalOptions="Fill">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Chilld Content" 
+                   FontSize="20" 
+                   HorizontalOptions="StartAndExpand" 
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+
+            <Image Source="ic_close" 
+                   HorizontalOptions="EndAndExpand" 
+                   HeightRequest="30"
+                   WidthRequest="50"
+                   IsVisible="{Binding CanCancel}"
+                   Grid.Row="0"
+                   Grid.Column="1">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CancelCommand}" 
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+
+            </Image>
+
+        </Grid>
+
+    </Border>
+</ContentPage>
